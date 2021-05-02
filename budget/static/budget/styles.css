@@ -1,0 +1,117 @@
+.primary-color-bg {
+    background-color: #114e60;
+}
+
+.secondary-color-bg {
+    background-color: #ffe3de;
+}
+
+.primary-color {
+    color: #114e60;
+}
+
+.secondary-color {
+    color: #f5cebe;
+}
+
+.secondary-color-btn {
+    color:#114e60;
+    border-color: #114e60;
+    
+}
+
+.secondary-color-btn:hover {
+    color: #fff;
+    background-color: #114e60;
+    border-color: #114e60;
+    
+}
+
+.primary-color-btn {
+    color: #fff;
+    background-color: #114e60;
+    border-color: #114e60;
+   
+}
+.category {
+    color: #114e60;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#account-view {
+    text-decoration: none;
+    color: #114e60;
+}
+
+#budget-view {
+    text-decoration: none;
+    color: #114e60;
+}
+
+.date-box {
+    width: 200px;
+}
+
+.category-text {
+    font-size: 14px;
+    
+}
+.category-box {
+    width: 200px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #114e60;
+    color: #114e60;
+    
+}
+
+.category-box:hover {
+    cursor: pointer;
+    background-color: #114e60;
+    color: #fff;
+}
+
+.category-box-active{
+    cursor: pointer;
+    background-color: #114e60;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    border-color: #114e60;
+}
+
+.category-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.hide {
+    display: none;
+}
+
+.message {
+    color: #114e60;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+    .category-container {
+        display: grid;
+        grid-template-columns: auto auto;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .category-container {
+        display: grid;
+        grid-template-columns: auto;
+    }
+}

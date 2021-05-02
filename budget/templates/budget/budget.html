@@ -1,0 +1,174 @@
+{% extends "budget/layout.html" %}
+{% load static %}
+
+{% block body %}   
+    <div class="d-flex flex-lg-row flex-column  justify-content-around secondary-color-bg ">
+        <div class="align-self-center">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_3jatqfkp.json"  background="transparent" speed="0.8"  style="width: 500px; height: 500px;"loop autoplay></lottie-player>
+        </div>
+        <h1 class="pt-5 align-self-center primary-color">Plan. &nbsp;Track. &nbsp;Repeat.</h3>
+        
+    </div>
+    
+    <div id="category-vew" class="my-5 mx-5 px-5 py-5 border rounded d-flex flex-row justify-content-around">
+        <div id="summary" class="my-auto">
+            <h5 class="text-center">This month you've spent</h5>
+            <h1 class="primary-color mt-5 text-center">
+             {%if total %} ${{total}}
+             {% else %} $ 0
+             {% endif %} 
+            </h1>
+        </div>
+        
+        <div class="category-container">
+            
+                {% if total_moneyTransfer %}
+                    <div id="category-box" data-cat="Transfer" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Money Transfer</p>
+                            <span data-cat="Money Transfer" class="category-text">${{total_moneyTransfer}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_restaurant %}
+                    <div id="category-box" data-cat="Restaurant" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Restaurant</p>
+                            <span data-cat="Restaurant" class="category-text">${{total_restaurant}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_transportation %}
+                    <div id="category-box" data-cat="Transportation" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Transportation</p>
+                            <span data-cat="Transportation" class="category-text">${{total_transportation}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_shopping %}
+                    <div id="category-box" data-cat="Shopping" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Shopping</p>
+                            <span data-cat="Shopping" class="category-text">${{total_shopping}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_services %}
+                    <div id="category-box" data-cat="Services" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Services</p>
+                            <span data-cat="Services" class="category-text">${{total_services}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_leisure %}
+                    <div id="category-box" data-cat="Leisure" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Leisure</p>
+                            <span data-cat="Leisure" class="category-text">${{total_leisure}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_health %}
+                    <div id="category-box" data-cat="Health & beauty" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Health & beauty</p>
+                            <span data-cat="Health & beauty" class="category-text">${{total_health}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_grocery %}
+                    <div id="category-box" data-cat="Grocery" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Grocery</p>
+                            <span data-cat="Grocery" class="category-text">${{total_grocery}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                {% if total_utility %}
+                    <div id="category-box" data-cat="Utility" class="category-box px-3 py-2 pb-0 my-2 mx-4">
+                        <div class="d-flex justify-content-between ">
+                            <p class="category-text my-0">Utility</p>
+                            <span data-cat="Utility" class="category-text">${{total_utility}}</span>
+                        </div>  
+                    </div>
+                {% else %}
+                {% endif %}
+                
+            
+                
+        </div>
+    </div>
+
+    <div id="spending-histroy" class="my-5 mx-5">
+        <div class="d-flex flex-row">
+            <h3 class="primary-color ">Your Spending</h3>    
+            <button id="add-item" class="ml-3 btn primary-color-btn">Add item</button>
+        </div>
+        <div id="add_item" class="mt-5"></div>
+        <h5 id="subsummary" class="primary-color d-flex justify-content-end">
+            Your spending total {% if total_budget%} ${{total_budget}}
+            {% else %} $ 0
+            {% endif %}
+        </h5>
+        {%if budgets %}
+            {% for budget in budgets %}
+                <div id="budget-box" data-cat="{{budget.category}}" class="d-flex flex-row justify-content-between py-4 px-5 my-3 border rounded">
+                        
+                            <div class="d-flex flex-colomn date-box">
+                                <p class="text-muted">{{budget.timestamp|date:"M d"}}</p>
+                                <p class="category ml-3 pt-1">{{budget.category}}</p>
+                            </div>
+                            <p>{{budget.item}}</p>
+                            <p>${{budget.item_price}}</p>
+                        
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="d-flex flex-row justify-content-between py-4 px-5 my-3 border rounded">
+                <p class="text-muted">No spending yet</p>
+            </div>
+        {% endif %}
+    </div>
+    
+   <div id="Account-histroy" class="my-5 mx-5">
+        <h3 class="mt-5 mb-4 primary-color ">Account Transaction</h3>    
+        <h5 id="subsummary" class="primary-color d-flex justify-content-end">
+            Account transactions total {% if total_spending %} ${{total_spending}}
+            {% else %} $ 0
+            {% endif %}
+        </h5>
+        {% if spendings %}
+            {% for spending in spendings %}
+                <div id="spending-box" data-cat="{{spending.category}}"  class="d-flex flex-row justify-content-between py-4 px-5 my-3 border rounded">
+                        
+                        <div class="d-flex flex-colomn">
+                            <p class="text-muted">{{spending.timestamp|date:"M d"}}</p>
+                            <p class="category ml-3 pt-1">{{spending.category}}</p>
+                        </div>
+                        <p>{{spending.item}}</p>
+                        <p>${{spending.item_price}}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="d-flex flex-row justify-content-between py-4 px-5 my-3 border rounded">
+                <p class="text-muted">No Transactions yet</p>
+            </div>
+        {% endif %}
+
+    </div>
+ 
+    {% block script %}
+        <script src="{% static 'budget/budget.js' %}"></script>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "budget/layout.html" %}
+{% load static %}
+
+{% block body %}   
+    <div class="d-flex flex-lg-row flex-column justify-content-around secondary-color-bg ">
+        <div class="align-self-center">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets9.lottiefiles.com/private_files/lf30_zm8gpi20.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+        </div>
+        <h3 class="pt-5 align-self-center primary-color">Sending money has never been easier!</h3>
+        
+    </div>
+    {% if transfers %}
+        <div id="new-transfer">
+            <h3 class="mt-5 mb-4 ml-5 primary-color ">New transfers</h3>    
+
+            {% for transfer in transfers %}
+            
+                
+                <div class="d-flex flex-row justify-content-between py-4 px-5 mx-5 my-3 border rounded">
+                    <div>
+                        <p><strong>{{transfer.sender}}</strong> sent you ${{transfer.amount}}</p>
+                        <p class="text-muted">{{transfer.message}}</p>
+                    </div>
+                    
+                    <form action="{% url 'accept' transfer.id %}" method="POST">
+                        {% csrf_token %}
+                        <input class="btn primary-color-btn btn-lg" type="submit" value="Accept">
+                    </form>
+                </div>
+            
+            {% endfor %}
+
+        </div>
+    {% endif %}
+    <h3 class="mt-5 mb-4 ml-5 primary-color ">Transfer</h3>
+
+    {% if account %}
+        <div id="Transfer-view" class="py-4 px-5 mx-5 border rounded">
+            <form id="transfer-form">
+                
+                <div class="form-group">
+                    Send to: <input id="transfer-recipient" class="form-control">
+                </div>
+                <div class="form-group">
+                    How much?
+                    <input class="form-control" id="trasnfer-amount" placeholder="$">
+                </div>
+                <textarea class="form-control" id="transfer-message" placeholder="message"></textarea>
+                <input type="submit" class="btn primary-color-btn mt-3">
+            </form>
+        </div>
+    
+        <div id="transfer-histroy">
+            <h3 class="mt-5 mb-4 ml-5 primary-color ">Your transfer history</h3>    
+            {%if historys%}
+                {% for history in historys %}
+                    <div class="d-flex flex-row justify-content-between py-4 px-5 mx-5 my-3 border rounded">
+                        <div>
+                            <p>You sent ${{history.amount}} to <strong>{{history.recipient}}</strong></p>
+                            <p class="text-muted">{{history.timestamp}}</p>
+                            
+                        </div>
+                        
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted mx-5">No transfer history</p>
+            {% endif %}
+
+        </div>
+    {% else %}
+        <div id="signup-view" class="d-flex flex-row justify-content-between py-4 px-5 mx-5 border rounded">
+            <div>
+                <h6>You will need an account to start transfering.</h6>
+                <p class="text-muted">Sign up today to get $200 on us!</p>
+            </div>
+            <form actions="{% url 'index' %}" method="POST">
+                {% csrf_token %}
+                <input class="btn primary-color-btn btn-lg" type="submit" value="Open account">
+            </form>
+        </div>
+    {% endif %}
+    
+    {% block script %}
+        <script src="{% static 'budget/fin.js' %}"></script>
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "budget/layout.html" %}
+{% load static %}
+
+{% block body %}   
+    <div class="d-flex flex-column justify-content-around secondary-color-bg ">
+        <div class="align-self-center">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_qzsgm3gz.json"  background="transparent" speed="1"  style="width: 300px; height: 300px;" autoplay></lottie-player>
+        </div>
+        <h3 class="pt-5 align-self-center primary-color">Keeping track of your money</h3>
+        
+    </div>
+    
+
+   
+   <div id="transfer-histroy">
+        <h3 class="mt-5 mb-4 ml-5 primary-color ">Transaction</h3>    
+        {%if spendings%}
+            {% for spending in spendings %}
+                <div class="d-flex flex-row justify-content-between py-4 px-5 mx-5 my-3 border rounded">
+                        <p class="text-muted">{{spending.timestamp|date:"M d"}}</p>
+                        <p>{{spending.item}}</p>
+                        <p>${{spending.item_price}}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted mx-5">No transaction history</p>
+        {% endif %}
+
+    </div>
+ 
+    {% block script %}
+        <script src="{% static 'budget/fin.js' %}"></script>
+    {% endblock %}
+{% endblock %}

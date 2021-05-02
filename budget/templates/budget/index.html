@@ -1,0 +1,74 @@
+{% extends "budget/layout.html" %}
+{% load static %}
+
+{% block body %}   
+    <div class="d-flex flex-lg-row flex-column justify-content-around secondary-color-bg ">
+        <div class="align-self-center">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_mrc7imzl.json"  background="transparent"  speed="0.5"  style="width: 500px; height: 500px;"  loop  autoplay></lottie-player>
+        </div>
+        <h2 class="pt-5 align-self-center primary-color">Welcome back  <strong>{{ user.username }}</strong> !</h3>
+        
+    </div>
+        
+        
+    {% if transfers %}
+        <div id="new-transfer">
+            <h3 class="mt-5 mb-4 ml-5 primary-color ">You have new transfers</h3>    
+
+            {% for transfer in transfers %}
+            
+                
+                <div class="d-flex flex-row justify-content-between py-4 px-5 mx-5 my-3 border rounded">
+                    <div>
+                        <p><strong>{{transfer.sender}}</strong> sent you ${{transfer.amount}}</p>
+                        <p class="text-muted">{{transfer.message}}</p>
+                    </div>
+                    
+                    <form action="{% url 'accept' transfer.id %}" method="POST">
+                        {% csrf_token %}
+                        <input class="btn primary-color-btn btn-lg" type="submit" value="Accept">
+                    </form>
+                </div>
+            
+            {% endfor %}
+
+        </div>
+    {% endif %}
+    {% if account %}
+        <h3 class="mt-5 mb-4 ml-5 primary-color ">Budget</h3>
+        <a href="{% url 'budget' %}" id="budget-view" class="d-flex flex-row justify-content-around py-4 px-5 mx-5 border rounded">
+            <div>
+                <h5 class="text-center">This month you have spent</h5>
+                <h1 class="primary-color mt-5 text-center">${{total}}</h1>
+                <div class="btn primary-color-btn my-5 d-flex justify-content-center">more details</div>
+            </div>
+            
+        </a>
+        <h3 class="mt-5 mb-4 ml-5 primary-color ">Account</h3>
+        <a href="{% url 'spending' %}" id="account-view" class="d-flex flex-row justify-content-between py-4 px-5 mx-5 border rounded">
+            <div>
+                <h6>Spending account</h6>
+                <p class="text-muted">{{account.number}}</p>
+            </div>
+            <p>${{account.amount}}</p>
+        </a>
+   
+    {% else %}
+        <h3 class="mt-5 mb-4 ml-5 primary-color ">Account</h3>
+        <div id="signup-view" class="d-flex flex-row justify-content-between py-4 px-5 mx-5 border rounded">
+            <div>
+                <h6>Dont have an spending account?</h6>
+                <p class="text-muted">Sign up today to get $200 on us!</p>
+            </div>
+            <form actions="{% url 'index' %}" method="POST">
+                {% csrf_token %}
+                <input class="btn primary-color-btn btn-lg" type="submit" value="Open account">
+            </form>
+        </div>
+    {% endif %}
+ 
+    {% block script %}
+        <script src="{% static 'budget/fin.js' %}"></script>
+    {% endblock %}
+{% endblock %}

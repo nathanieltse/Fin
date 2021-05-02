@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}Social Network{% endblock %}</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="{% static 'budget/styles.css' %}" rel="stylesheet">
+        
+    </head>
+    <body>
+       
+            
+        <nav class="navbar navbar-expand-lg navbar-dark d-flex justify-content-between" style="background-color: #114e60;">
+            
+            <a class="navbar-brand ml-3" href="{% url 'index' %}">Fin</a>
+        
+            <div>
+            <ul class="navbar-nav ">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="nav-item mr-3">
+                    <a class="nav-link" href="{% url 'transfer' %}">Transfer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{% url 'logout' %}"><button class="btn btn-outline-secondary">Log Out</button></a>
+                    </li>
+                
+                {% endif %}
+            </ul>
+            </div>
+        </nav>
+       
+        <div class="body">
+            {% block body %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

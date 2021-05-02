@@ -1,0 +1,24 @@
+{% extends "budget/layout.html" %}
+{% load static %}
+
+{% block body %}   
+    <div class="d-flex flex-lg-row flex-column justify-content-around secondary-color-bg ">
+        <div class="align-self-center">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets2.lottiefiles.com/private_files/lf30_aXRkcv.json"  background="transparent"  speed="0.5"  style="width: 700px; height: 95vh;"  loop  autoplay></lottie-player>
+        </div>
+        <div class="align-self-center mb-5">
+            
+            <h3 class="pt-5 primary-color ">New ways to money</h3>
+            <div class="mt-3 d-flex justify-content-around">
+                <a class="btn primary-color-btn" href="{% url 'login' %}">Log In</a>
+                <a class="btn secondary-color-btn" href="{% url 'register' %}">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+ 
+    {% block script %}
+        <script src="{% static 'budget/fin.js' %}"></script>
+    {% endblock %}
+{% endblock %}
