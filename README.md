@@ -1,5 +1,5 @@
 # Fin
-> Fin is a mobile responsive fintech web application for the user to track their spendings and managing their money.
+> Fin is a mobile responsive fintech web application for the user to track their spendings and manage their money.
 
 &nbsp;
 
