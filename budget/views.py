@@ -90,7 +90,7 @@ def index(request):
         return render(request, "budget/index.html",{
             "account":account,
             "transfers":new_transfer,
-            "total":total,
+            "total":'{:0.2f}'.format(total),
         })
     else:
         return HttpResponseRedirect(reverse("greeting"))
@@ -370,9 +370,9 @@ def budget_view(request):
     return render(request, "budget/budget.html", {
         "spendings":spending,
         "budgets":budget,
-        "total_budget":total_budget,
-        "total_spending":total_spending,
-        "total":total,
+        "total_budget":'{:0.2f}'.format(total_budget),
+        "total_spending":'{:0.2f}'.format(total_spending),
+        "total":'{:0.2f}'.format(total),
         "total_moneyTransfer":MoneyTransfer,
         "total_restaurant":Restaurant,
         "total_transportation":Transportation,
