@@ -47,7 +47,7 @@ Inside `budget`, `models.py` has 7 database models :
 
 * transfering
 
-* accepting moeny transfers
+* accepting moneyy transfers
 
 * welcome page
 
