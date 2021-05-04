@@ -75,7 +75,7 @@ Inside `budget`, `models.py` has 7 database models :
 
 * The `transfer` view renders the transfer page. The function checks if user has a spending account and present them option to open one. The function also checks if user has transfer from other people and notify user to accept transfer.
 
-* The `accept` view is a function to let user accept any incoming transfer and checks to make sure it's the intend recipient accepting the transfer and transfer has never been recieved before user does.
+* The `accept` view is a function to let user accept any incoming transfer and checks to make sure it's the intended recipient accepting the transfer and transfer has never been recieved before user does.
 
 * The `transfer_function` view is an API call function to let user transfers money out.It checks to make sure recipient exsists, user has enough fund in account and the form is filled out with required information for user to transfer money to other account. 
 
