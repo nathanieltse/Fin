@@ -57,7 +57,7 @@ Inside `budget`, `models.py` has 7 database models :
 
 &nbsp;
 
-`url.py` also has two API call route for posting transfering record and letting user add their spending record.
+`url.py` also has two API calls route for posting transfering record and letting user add their spending record.
 
 &nbsp;
 
