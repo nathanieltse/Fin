@@ -93,7 +93,7 @@ For static file, it hosts custom CSS file for styling and two Javascript file fo
 
 `budget.js` is specfically for the budget page. 
 
-* When user click the Add item button it calls the `add_item` function and display a form in the browser for user to file out. The `add_item` function check to make sure form is not empty otherwise the submit button would be disabledand display a message for user that all fields need to be filled out
+* When user click the Add item button it calls the `add_item` function and display a form in the browser for user to fill out. The `add_item` function check to make sure form is not empty otherwise the submit button would be disabledand display a message for user that all fields need to be filled out
 
 * When user click the submit button it calls the `add_btn` function and call the API to post all the input to the database.
 
