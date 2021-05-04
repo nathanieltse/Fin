@@ -11,32 +11,32 @@ This application is built on Python Django framework with SQLite as back end and
 
 &nbsp;
 # Understanding
-In the source code is a Django project called `capstone` that contain a single app called `budget`.
+In the source code is a Django project called `Fin` that contain a single app called `budget`.
 
 &nbsp;
 
 Inside `budget`, `models.py` has 7 database models : 
 * `User` for user account data
 
-* `Account` for user's money record
+* `Account` for user's money records
 
-* `Spending` for user's transaction record
+* `Spending` for user's transaction records
 
 * `Category` for system's category options
 
-* `Transfer` for transfering record
+* `Transfer` for transfering records
 
-* `Budget` for user's self tracking spending record
+* `Budget` for user's self tracking spending records
 
 * `User_budget` for user's spending record from all sources
 
 &nbsp;
 
-`admin.py` takes in all 7 models database and displays them in lists in the back end admin site for siteadmin.
+`admin.py` takes in all 7 models database and displays them in lists in the back end site for site admin.
 
 &nbsp;
 
-`urls.py` has 9 path for all functions like :
+`urls.py` has 9 paths for all functions like :
 * landing page
 
 * logging in
@@ -47,7 +47,7 @@ Inside `budget`, `models.py` has 7 database models :
 
 * transfering
 
-* accepting moneyy transfers
+* accepting money transfers
 
 * welcome page
 
@@ -57,7 +57,7 @@ Inside `budget`, `models.py` has 7 database models :
 
 &nbsp;
 
-`url.py` also has two API calls route for posting transfering record and letting user add their spending record.
+`url.py` also has two API calls for posting transfering records and letting user add their spending records.
 
 &nbsp;
 
@@ -65,7 +65,7 @@ Inside `budget`, `models.py` has 7 database models :
 
 * The `greeting` view renders the greeting page for user who are not logged it.
 
-* The `index` view renders the landing page once user are logged in, and if user doesn't have a spending account they would be presented with option to open one. The `index` view checks if user has transfer from other people and notify user to accept transfer, the `index` view also calculate user's total spending of the month and renders on the `index` page.
+* The `index` view renders the landing page once user are logged in, and if user doesn't have a spending account they would be presented with option to open one. The `index` view checks if user has transfer from other people and notify user to accept transfer, the `index` view also calculates user's total spending of the month and renders on the `index` page.
 
 * The `login_view` view renders the login page for user log in.
 
@@ -73,31 +73,31 @@ Inside `budget`, `models.py` has 7 database models :
 
 * The `register` view let user registers an account and ensure they meet account information requirements.
 
-* The `transfer` view renders the transfer page. The function checks if user has a spending account and present them option to open one. The function also checks if user has transfer from other people and notify user to accept transfer.
+* The `transfer` view renders the transfer page. The function checks if user has a spending account and present them option to open one. The function also checks if user has transfers from other people and notify user to accept transfer.
 
-* The `accept` view is a function to let user accept any incoming transfer and checks to make sure it's the intended recipient accepting the transfer and transfer has never been recieved before user does.
+* The `accept` view is a function to let user accepts any incoming transfer and checks to make sure it's the intended recipient accepting the transfer and transfer has never been recieved before user does.
 
-* The `transfer_function` view is an API call function to let user transfers money out.It checks to make sure recipient exsists, user has enough fund in account and the form is filled out with required information for user to transfer money to other account. 
+* The `transfer_function` view is an API call function to let user transfers money out.It checks to make sure recipient exsists, user has enough fund in account and the form is filled out with required informations for user to transfer money to other account. 
 
-* The `spending_view` view renders the spending account's transaction record.
+* The `spending_view` view renders the spending account's transaction records.
 
-* The `budget_view` view renders the budget page that shows user each of the category spending for the month and it's total individually. It also renders all records of the month and split it into spending account record and user's self tracking record.
+* The `budget_view` view renders the budget page that shows user each of the category spending for the month and it's total individually. It also renders all records of the month and splits it into spending account records and user's self tracking records.
 
-* The `spending_function` view is an API call function that takes user's request  to track their spending from the budget page. It ensures the form is properly filled out to be able to post the data to the database.
+* The `spending_function` view is an API call function that takes user's request to track their spendings from the budget page. It ensures the form is properly filled out to be able to post the data to the databases.
 
 &nbsp;
 
-For static file, it hosts custom CSS file for styling and two Javascript file for different pages.
+For static file, it hosts custom CSS file for styling and two Javascript files for different pages.
 
 `fin.js` has an eventlistner for submitting form for user to tansfer money to the `transfer_function` API.
 
 `budget.js` is specfically for the budget page. 
 
-* When user click the Add item button it calls the `add_item` function and display a form in the browser for user to fill out. The `add_item` function check to make sure form is not empty otherwise the submit button would be disabledand display a message for user that all fields need to be filled out
+* When user clicks the Add item button it calls the `add_item` function and displays a form in the browser for user to fill out. The `add_item` function checks to make sure form is not empty otherwise the submit button would be disabled and display a message for user that all fields need to be filled out
 
-* When user click the submit button it calls the `add_btn` function and call the API to post all the input to the database.
+* When user clicks the submit button it calls the `add_btn` function and calls the API to post all the input to the databases.
 
-* The `show(button)` function take in each category box(button) as argument and is called when user click on one of the category boxes. The function would remove all irrelavent spending records and only shows records that matches the category that user picked. It also presents a returning route when category boxes are clicked for user to display all records again.
+* The `show(button)` function takes in each category box(button) as argument and is called when user click on one of the category boxes. The function would remove all irrelavent spending records and only shows records that matches the category that user picked. It also presents a returning route when category boxes are clicked for user to display all records again.
 
 &nbsp;
 
@@ -126,7 +126,7 @@ For static file, it hosts custom CSS file for styling and two Javascript file fo
 
 &nbsp;
 
->landing page when user has a incoming transfer notification and option to accept.
+>landing page when user has an incoming transfer notification and option to accept.
 
 &nbsp;
 
@@ -142,7 +142,7 @@ For static file, it hosts custom CSS file for styling and two Javascript file fo
 
 &nbsp;
 
->budget page that shows user their monthly total spending and each category's breakdown. Add item button for adding spending for tracking and all this month's spending records and transaction records from spending account
+>budget page that shows user their monthly total spendings and each category's breakdown. Add item button for adding spendings for tracking and all this month's spending records and transaction records from spending account
 
 &nbsp;
 
@@ -150,7 +150,7 @@ For static file, it hosts custom CSS file for styling and two Javascript file fo
 
 &nbsp;
 
->When category button are selected the browser will only display selected category's spending and present a show all button to show all records again.
+>When category button is selected the browser will only display selected category's spending and present a Show All button to show all records again.
 
 &nbsp;
 
@@ -158,7 +158,7 @@ For static file, it hosts custom CSS file for styling and two Javascript file fo
 
 &nbsp;
 
->When add item button is clicked, brower would render a form for user to track their spending, submit button is disabled until all field is filled out with a message reminder.
+>When add item button is clicked, brower would render a form for user to track their spendings, submit button is disabled until all fields are filled out with a message reminder.
 
 &nbsp;
 
@@ -174,7 +174,7 @@ For static file, it hosts custom CSS file for styling and two Javascript file fo
 
 &nbsp;
 
->When user recieve an incoming transfer, notification would pop up for user to accept the transfer.
+>When user recieves an incoming transfer, notification would pop up for user to accept the transfer.
 
 &nbsp;
 
